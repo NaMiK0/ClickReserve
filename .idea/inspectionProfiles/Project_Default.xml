@@ -1,0 +1,37 @@
+<component name="InspectionProjectProfileManager">
+  <profile version="1.0">
+    <option name="myName" value="Project Default" />
+    <inspection_tool class="PyPackageRequirementsInspection" enabled="true" level="WARNING" enabled_by_default="true">
+      <option name="ignoredPackages">
+        <list>
+          <option value="attrs" />
+          <option value="flake8" />
+          <option value="flake8-docstrings" />
+          <option value="mccabe" />
+          <option value="pep8-naming" />
+          <option value="py" />
+          <option value="pycodestyle" />
+          <option value="pyflakes" />
+          <option value="tomli" />
+          <option value="yapf" />
+          <option value="asgiref" />
+          <option value="Django" />
+          <option value="django-bootstrap5" />
+          <option value="Faker" />
+          <option value="iniconfig" />
+          <option value="mixer" />
+          <option value="packaging" />
+          <option value="Pillow" />
+          <option value="pluggy" />
+          <option value="pytest" />
+          <option value="pytest-django" />
+          <option value="python-dateutil" />
+          <option value="pytz" />
+          <option value="six" />
+          <option value="sqlparse" />
+          <option value="beautifulsoup4" />
+        </list>
+      </option>
+    </inspection_tool>
+  </profile>
+</component>
