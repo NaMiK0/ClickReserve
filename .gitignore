@@ -1,0 +1,21 @@
+# Секреты и виртуальное окружение
+backend/app/.env
+.env
+.venv/
+venv/
+env/
+
+# Кэш Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Настройки сред разработки (PyCharm, VS Code)
+.idea/
+.vscode/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.swp
