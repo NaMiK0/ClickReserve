@@ -6,7 +6,6 @@ from backend.app.schemas.event import EventCreate
 
 
 class EventRepository:
-    session: AsyncSession
     def __init__(self, async_session: AsyncSession):
         self.session = async_session
 
