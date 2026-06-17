@@ -29,6 +29,8 @@ services:
       - "8000:8000"
     env_file:
       - .env
+    volumes:
+      - .:/project/backend/app
     depends_on:
       - db
       - redis

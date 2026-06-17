@@ -10,8 +10,8 @@ from backend.app.routers.booking import router as booking_router
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
-    async with async_engine.begin() as conn:
-        await conn.run_sync(Base.metadata.create_all)
+    # async with async_engine.begin() as conn:
+    #     await conn.run_sync(Base.metadata.create_all)
     asyncio.create_task(delete_expired_bookings())
     yield
     await redis_client.close()
