@@ -8,6 +8,10 @@ class Settings(BaseSettings):
     sql_db_name: str
     redis_connect: str
 
+    jwt_secret_key: str = "change-me-in-production-please-use-a-long-random-value"
+    jwt_algorithm: str = "HS256"
+    access_token_expire_minutes: int = 30
+
     model_config = SettingsConfigDict(env_file=".env", env_file_encoding="utf-8")
 
     @property

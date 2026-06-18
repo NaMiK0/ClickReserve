@@ -9,6 +9,7 @@ class BookingCreate(BaseModel):
 
 class BookingRead(BookingCreate):
     id: int
+    id_user: int
     status: BookingStatus
     created_at: datetime
     expires_at: datetime

@@ -13,7 +13,7 @@ sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), "..",
 
 from backend.app.config import settings
 from backend.app.database import Base
-from backend.app.models import Booking, Event, Seat
+from backend.app.models import Booking, Event, Seat, User
 
 
 

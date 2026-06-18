@@ -6,30 +6,24 @@ from sqlalchemy import select
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from backend.app.models import Booking, Seat
-from backend.app.redis_client import redis_client
-from backend.app.database import async_engine
+from backend.app.models.user import User
 from backend.app.schemas.booking import BookingCreate, BookingRead
 from backend.app.schemas.seat import SeatRead
 from backend.app.services.booking import BookingService
+from backend.app.routers.dependencies import get_current_user, get_redis, get_session as get_db
 
 router = APIRouter(prefix="/bookings", tags=["bookings"])
 
-async def get_db():
-    async with AsyncSession(async_engine) as session:
-        yield session
-
-async def get_redis():
-    yield redis_client
-
-@router.post("")
+@router.post("", response_model=BookingRead, status_code=status.HTTP_201_CREATED)
 async def booking_seat(
         booking_data: BookingCreate,
         session: AsyncSession = Depends(get_db),
-        redis: Redis = Depends(get_redis)
+        redis: Redis = Depends(get_redis),
+        current_user: User = Depends(get_current_user),
 ):
     try:
         booking_service = BookingService(session, redis)
-        booking = await booking_service.book_seat(booking_data)
+        booking = await booking_service.book_seat(booking_data, current_user.id)
         return booking
     except ValueError as e:
         raise HTTPException(status_code=409, detail=str(e))

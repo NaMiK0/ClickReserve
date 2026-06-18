@@ -22,3 +22,11 @@ class EventRepository:
         events = result.scalars().all()
 
         return events
+
+    async def get_event_by_id(self, event_id: int) -> Event | None:
+        result = await self.session.execute(select(Event).where(Event.id == event_id))
+        return result.scalars().first()
+
+    async def delete_event(self, event: Event) -> None:
+        await self.session.delete(event)
+        await self.session.commit()

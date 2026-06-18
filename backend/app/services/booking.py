@@ -10,10 +10,10 @@ class BookingService:
         self.booking_repo = BookingRepository(session)
         self.redis = redis_client
 
-    async def book_seat(self, booking_data:BookingCreate):
+    async def book_seat(self, booking_data: BookingCreate, user_id: int):
         res = await self.redis.set(f"lock:seat:{booking_data.id_seat}", booking_data.id_seat, nx=True, ex=600)
         if res:
-            booking_seat = await self.booking_repo.create_booking(booking_data)
+            booking_seat = await self.booking_repo.create_booking(booking_data, user_id)
             return booking_seat
         else:
             raise ValueError("This seat is already booked")
